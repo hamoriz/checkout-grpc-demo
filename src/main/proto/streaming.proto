@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcdemo";
+option java_outer_classname = "CheckoutProto";
+
+package ticker;
+
+service StreamingCheckout {
+  rpc subscribeCheckoutJob (CheckoutJobRequest) returns (stream CheckoutJobReply) {}
+}
+
+message CheckoutJobRequest {
+  string application = 1;
+}
+
+message CheckoutJobReply {
+  string status = 1;
+}
